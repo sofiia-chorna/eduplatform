@@ -8,7 +8,7 @@ def main():
     st.header('English Grammar Corner')
     st.write('In this section, let\'s explore some interesting aspects of English grammar!')
 
-    tab1, tab2, tab3 = st.tabs(["Family life", "Me and My Education", "Owl"])
+    tab1, tab2 = st.tabs(["Family life", "Me and My Education"])
 
     with tab1:
         get_family_life_tab()
