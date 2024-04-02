@@ -12,7 +12,7 @@ class UI:
             Page("ui/pages/vocabulary.py", "Грамматика", "📝"),  # Memo
             Page("ui/pages/video.py", "Видео", "🎥"),  # Movie Camera
             Page("ui/pages/grammar.py", "Лексика", "📚"),  # Books
-            Page("ui/pages/about.py", "About", "ℹ️"),  # Information
+            # Page("ui/pages/about.py", "About", "ℹ️"),  # Information
         ]
 
         show_pages(pages)

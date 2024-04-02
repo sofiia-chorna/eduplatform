@@ -70,10 +70,12 @@ def tab1_generate_answers():
 
 
 def get_family_life_tab():
+
     # Expander for vocabulary
     with st.expander("Vocabulary"):
         for term, definition in tab1_definitions.items():
             st.markdown(f"**{term}**: {definition}")
+    st.image("https://img.freepik.com/free-vector/big-family-meeting_74855-5220.jpg?size=626&ext=jpg&ga=GA1.1.1687694167.1711929600&semt=sph")
 
     st.title("Lexical Exercise")
 

@@ -1,5 +1,4 @@
 import streamlit as st
-from ui.pages.read_texts import american_edu_article, transform_edu_article, uk_edu_article
 
 words_definitions = {
     "study": "изучение (исследование)\n\nI learn Russian because I want to be able to read academic studies. – Я изучаю русский язык, потому что хочу научиться читать научные работы.",
@@ -91,13 +90,234 @@ definitions = {
 
 
 def display_terms():
-    for term, definition in words_definitions.items():
-        st.markdown(f"**{term}**: {definition}")
-        st.write("------")
+    with st.expander("Vocabulary"):
+        for term, definition in words_definitions.items():
+            st.markdown(f"**{term}**: {definition}")
+            st.write("------")
 
-    for term, definition in definitions.items():
-        st.markdown(f"**{term}**: {definition}")
+        for term, definition in definitions.items():
+            st.markdown(f"**{term}**: {definition}")
+
+
+def get_meaning_quiz_ex():
+    with st.expander('I. Connect the Expressions with Their Meanings'):
+
+        # Define expressions, meanings, and correct answers
+        expressions = {
+            'a': "Enroll/Sign up for",
+            'b': "Hit the books",
+            'c': "Hand out assignment",
+            'd': "Pull an all-nighter",
+            'e': "Hands in paper/assignment",
+            'f': "Cut class",
+            'g': "Fall behind (in)",
+            'h': "Get caught up",
+            'i': "Withdraw from the course",
+            'j': "Plagiarize",
+            'k': "Expel/kick out",
+        }
+
+        meanings = {
+            1: "To decide to go to university or to take a certain class",
+            2: "Get on the same level with everybody",
+            3: "To skip class",
+            4: "To study hard",
+            5: "To give students homework",
+            6: "To get discarded from the university",
+            7: "To get your paper done by somebody else",
+            8: "To give the professor your work for assessment",
+            9: "To leave a course before you finish it",
+            11: "Staying up all night to finish something or Can't keep up with the school curriculum",
+        }
+
+        correct_answers = {
+            'a': 1, 'b': 4, 'c': 5, 'd': 11, 'e': 8, 'f': 3, 'g': 11, 'h': 2, 'i': 9, 'j': 7, 'k': 6
+        }
+
+        # Initialize or reset session state variables
+        if 'answers_shown_ex1' not in st.session_state:
+            st.session_state.answers_shown_ex1 = False
+
+        for key in expressions.keys():
+            if f'select_{key}_ex1' not in st.session_state:
+                st.session_state[f'select_{key}_ex1'] = "Select an option"
+
+        # Function to show correct answers
+        def show_correct_answers():
+            st.session_state.answers_shown_ex1 = not st.session_state.answers_shown_ex1
+
+        # Function to clear selections
+        def clear_selections():
+            for key in expressions.keys():
+                st.session_state[f'select_{key}_ex1'] = "Select an option"
+            st.session_state.answers_shown_ex1 = False
+
+        # Function to calculate and show the score
+        def show_score():
+            score = 0
+            for letter, expression in expressions.items():
+                if st.session_state[f'select_{letter}_ex1'] == meanings[correct_answers[letter]]:
+                    score += 1
+            st.write(f"Your score: {score}/{len(expressions)}")
+
+        # UI for matching expressions to meanings
+        for letter, expression in expressions.items():
+            options = ["Select an option"] + list(meanings.values())
+            index = 0 if not st.session_state.answers_shown_ex1 else options.index(meanings[correct_answers[letter]])
+            selected_option = st.selectbox(expression, options, index=index, key=f'select_{letter}_ex1')
+
+        # Buttons for user actions
+        st.button("Toggle Show Answers", on_click=show_correct_answers, key="show_correct_answers_button_ex1")
+        st.button("Clear Selections", on_click=clear_selections, key="clear_selection_button_ex1")
+
+        # Button to show score
+        if st.button("Show Score", key="show_score_button_ex1"):
+            show_score()
+
+
+def get_colocation_quiz_ex():
+    with st.expander("II. Choose the right word to form a collocation: school/goals/year/education"):
+        # Define expressions, meanings, and correct answers
+        expressions = {
+            'a': "Private ...",
+            'b': "School ...",
+            'c': "Learning ...",
+            'd': "Formal ...",
+        }
+
+        meanings = {
+            1: "school",
+            2: "goals",
+            3: "year",
+            4: "education",
+        }
+
+        correct_answers = {
+            'a': 1, 'b': 3, 'c': 2, 'd': 4
+        }
+
+        # Initialize or reset session state variables
+        if 'answers_shown_ex2' not in st.session_state:
+            st.session_state.answers_shown_ex2 = False
+
+        for key in expressions.keys():
+            if f'select_{key}_ex2' not in st.session_state:
+                st.session_state[f'select_{key}_ex2'] = "Select an option"
+
+        # Function to show correct answers
+        def show_correct_answers():
+            st.session_state.answers_shown_ex2 = not st.session_state.answers_shown_ex2
+
+        # Function to clear selections
+        def clear_selections():
+            for key in expressions.keys():
+                st.session_state[f'select_{key}_ex2'] = "Select an option"
+            st.session_state.answers_shown_ex2 = False
+
+        # Function to calculate and show the score
+        def show_score():
+            score = 0
+            for letter, expression in expressions.items():
+                if st.session_state[f'select_{letter}_ex2'] == meanings[correct_answers[letter]]:
+                    score += 1
+            st.write(f"Your score: {score}/{len(expressions)}")
+
+        # UI for matching expressions to meanings
+        for letter, expression in expressions.items():
+            options = ["Select an option"] + list(meanings.values())
+            index = 0 if not st.session_state.answers_shown_ex2 else options.index(meanings[correct_answers[letter]])
+            selected_option = st.selectbox(expression, options, index=index, key=f'select_{letter}_ex2')
+
+        # Buttons for user actions
+        st.button("Toggle Show Answers", on_click=show_correct_answers, key="show_correct_answers_button_ex2")
+        st.button("Clear Selections", on_click=clear_selections, key="clear_selection_button_ex2")
+
+        # Button to show score
+        if st.button("Show Score", key="show_score_button_ex2"):
+            show_score()
+
+
+def get_suitable_option_ex():
+    with st.expander(
+            "III. Choose the most suitable option to complete these sentences. You can use each option ONLY ONCE."):
+        options = {
+            1: ["Select an option", "grade", "grade", "grade", "grade", "grade", "grade", "grade", "grade", "grade"],
+            2: ["Select an option", "failed", "failed", "failed", "failed", "failed", "failed", "failed", "failed",
+                "failed"],
+            3: ["Select an option", "graduates", "graduates", "graduates", "graduates", "graduates", "graduates",
+                "graduates", "graduates", "graduates"],
+            4: ["Select an option", "research", "research", "research", "research", "research", "research", "research",
+                "research", "research"],
+            5: ["Select an option", "sitting", "sitting", "sitting", "sitting", "sitting", "sitting", "sitting",
+                "sitting",
+                "sitting"],
+            6: ["Select an option", "expelled", "expelled", "expelled", "expelled", "expelled", "expelled", "expelled",
+                "expelled", "expelled"],
+            7: ["Select an option", "hand in", "hand in", "hand in", "hand in", "hand in", "hand in", "hand in",
+                "hand in",
+                "hand in"],
+            8: ["Select an option", "study", "study", "study", "study", "study", "study", "study", "study", "study"],
+            9: ["Select an option", "enrolled", "enrolled", "enrolled", "enrolled", "enrolled", "enrolled", "enrolled",
+                "enrolled", "enrolled"],
+            10: ["Select an option", "revising", "revising", "revising", "revising", "revising", "revising", "revising",
+                 "revising", "revising"]
+        }
+
+        sentences = {
+            1: "I hope I get a good ___ for my essay.",
+            2: "I was disappointed when I found out that I’d ___ my exam.",
+            3: "After Luke ___ from high school, he’ll go to university.",
+            4: "I had to do a lot of ___ for my geography project.",
+            5: "Students who are ___ exams must leave their phones in their bags.",
+            6: "Larry was ___ for his rude and anti-social behaviour.",
+            7: "We have to ___ our assignments by 4 p.m. on Friday.",
+            8: "If I could ___ abroad, I’d like to go to France.",
+            9: "When I ___ in the course, I had to fill in a lot of forms.",
+            10: "I really don’t enjoy ___ for exams."
+        }
+
+        def display_quiz():
+            for i in range(1, 11):
+                selected_option = st.selectbox(sentences[i], options[i])
+                if selected_option != "Select an option":
+                    st.session_state[f'select_{i}_ex3'] = selected_option
+
+        def show_answers():
+            for i in range(1, 11):
+                st.write(f"Answer {i}: {st.session_state[f'select_{i}_ex3']}")
+
+        def clear_selections():
+            for i in range(1, 11):
+                st.session_state[f'select_{i}_ex3'] = "Select an option"
+
+            # Initialize or reset session state variables
+
+        if 'answers_shown_ex3' not in st.session_state:
+            st.session_state.answers_shown_ex3 = False
+        for key in sentences.keys():
+            if f'select_{key}_ex3' not in st.session_state:
+                st.session_state[f'select_{key}_ex3'] = "Select an option"
+
+        display_quiz()
+
+        st.button("Show Answers", on_click=show_answers)
+        st.button("Clear Selections", on_click=clear_selections)
+
+
+def display_exercise():
+    st.title("Lexical Exercise")
+    st.image("https://img.freepik.com/free-vector/scientists-studying-neural-connections-programmers-writing-codes-machine-brain_74855-14157.jpg")
+    get_meaning_quiz_ex()
+    get_colocation_quiz_ex()
+    # get_suitable_option_ex()
 
 
 def get_education_tab():
+    # Initialize session state for showing answers if not already done
+    if 'answers_shown_ex1' not in st.session_state:
+        st.session_state["answers_shown_ex1"] = False
+    if 'answers_shown_ex2' not in st.session_state:
+        st.session_state["answers_shown_ex2"] = False
+
     display_terms()
+    display_exercise()
