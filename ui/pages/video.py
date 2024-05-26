@@ -17,7 +17,15 @@ def main():
 
     with st.expander("25 Academic English Words You Should Know | Perfect for University, IELTS, and TOEFL"):
         st.video("https://www.youtube.com/watch?v=BNL7qK09r7I")
+    
+    with st.expander("Do you enjoy your job?"):
+        st.video("https://www.youtube.com/watch?v=TSmxTx5d1sk")
 
+    with st.expander("Health is above wealth"):
+        st.video("https://www.youtube.com/watch?v=jhKvRfcJDwQ")
+
+    with st.expander("Learn Basic English Vocabulary: FAMILY"):
+        st.video("https://www.youtube.com/watch?v=Tmr4492_wkA")
 
 if __name__ == "__main__":
     main()
