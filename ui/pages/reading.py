@@ -1,7 +1,7 @@
 import streamlit as st
 from ui.pages.reading_texts_tab1 import american_edu_article, transform_edu_article, uk_edu_article
 from ui.pages.reading_texts_tab2 import carrier_article
-
+from ui.pages.reading_texts_tab3 import health_article
 
 def get_american_edu_article():
     st.markdown("Steiner: The fundamental cause of poor outcomes is that policy leaders have eroded the instructional "
@@ -104,16 +104,24 @@ def get_carrier_tab():
         # if st.button("Restart Quiz", key="restart_quiz_button"):
         #     restart_quiz()
 
+def get_health_article():
+    st.markdown(health_article)
+
+def get_health_tab():
+    get_health_article()
 
 def main():
     st.title("Articles")
-    tab1, tab2 = st.tabs(["Education", "Careers"])
+    tab1, tab2, tab3 = st.tabs(["Education", "Careers", "Health"])
 
     with tab1:
         get_education_tab()
 
     with tab2:
         get_carrier_tab()
+    
+    with tab3:
+        get_health_tab()
 
 
 if __name__ == "__main__":
