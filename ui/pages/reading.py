@@ -2,6 +2,8 @@ import streamlit as st
 from ui.pages.reading_texts_tab1 import american_edu_article, transform_edu_article, uk_edu_article
 from ui.pages.reading_texts_tab2 import carrier_article
 from ui.pages.reading_texts_tab3 import health_article
+from ui.pages.utils import display_quiz
+
 
 def get_american_edu_article():
     st.markdown("Steiner: The fundamental cause of poor outcomes is that policy leaders have eroded the instructional "
@@ -19,6 +21,28 @@ def get_transform_edu_article():
 
 def get_uk_edu_article():
     st.markdown(uk_edu_article)
+    
+    questions = {
+        1: "Education in the UK is highly regarded worldwide.",
+        2: "International students in the UK receive no language support.",
+        3: "Obtaining a degree in the UK is more time-consuming than in other countries.",
+        4: "UK students can gain work experience while studying.",
+        5: "International students in the UK receive no benefits or discounts.",
+        6: "Numerous scholarships are available in the UK for students at all levels.",
+        7: "International students in the UK do not have access to free healthcare."
+    }
+
+    answers = {
+        1: "T",
+        2: "F",
+        3: "F",
+        4: "T",
+        5: "F",
+        6: "T",
+        7: "F"
+    }
+
+    display_quiz(questions, answers, prefix="uk")
 
 
 def get_education_tab():
@@ -39,6 +63,7 @@ def get_carrier_tab():
     st.image("https://cdn.seeklearning.com.au/media/images/career-guide/article/career-advice/web_images/blogs"
              "/214/6730/2023.000_NOV-CANDI_Blog_List_of_Careers_1280x660.jpg")
     st.markdown(carrier_article)
+    
     questions = {
         1: "It is impossible to work as a Marketing Specialist on a freelance basis.",
         2: "A Doctor can easily find a job in England.",
@@ -65,50 +90,16 @@ def get_carrier_tab():
         10: "F"
     }
 
-    def display_questions():
-        for i in range(1, 11):
-            st.write(f"Question {i}: {questions[i]}")
+    display_quiz(questions, answers, prefix="career")
 
-    def calculate_score():
-        score = 0
-        for i in range(1, 11):
-            user_answer = st.session_state[f'q_{i}']
-            if user_answer == answers[i]:
-                score += 1
-        st.write(f"Your score is: {score}/10")
-
-    def show_answers():
-        for i in range(1, 11):
-            st.write(f"Answer {i}: {answers[i]}")
-
-    def restart_quiz():
-        for i in range(1, 11):
-            if f'q_{i}' not in st.session_state:
-                st.session_state[f'q_{i}'] = None
-
-    if 'quiz_started' not in st.session_state:
-        st.session_state.quiz_started = False
-
-    if not st.session_state.quiz_started:
-        st.button("Start Quiz", on_click=lambda: st.session_state.update(quiz_started=True))
-    else:
-        for i in range(1, 11):
-            user_answer = st.radio(f"Question {i}: {questions[i]}", ('T', 'F'), key=f'q_{i}')
-
-        if st.button("Get Score", key="calc_score_button"):
-            calculate_score()
-
-        if st.button("Show Answers", key="show_answers_button"):
-            show_answers()
-
-        # if st.button("Restart Quiz", key="restart_quiz_button"):
-        #     restart_quiz()
 
 def get_health_article():
     st.markdown(health_article)
 
+
 def get_health_tab():
     get_health_article()
+
 
 def main():
     st.title("Articles")
