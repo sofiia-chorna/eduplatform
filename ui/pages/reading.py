@@ -11,6 +11,25 @@ def get_american_edu_article():
     st.markdown("By David Steiner July 20, 2023")
     st.write("------")
     st.markdown(american_edu_article)
+    questions = {
+        1: "Math and reading scores for 13-year-olds have reached their highest scores in decades.",
+        2: "Even with almost $200 billion in emergency federal funding for K-12 schooling, students' performance has declined over the past ten years.",
+        3: "The news was received as 'reassuring,' 'encouraging' and 'hopeful.",
+        4: "Political scientist Vladimir Kogan emphasises the need to improve based on the new federal data.",
+        5: "Diane Ravitch suggested that politicians should invest more in charter schools, vouchers, high-stakes testing and Cybercharters.",
+        6: "External factors such as race-based redlining, underfunding of healthcare, lack of support for child care and parental leave, and other social and economic policies have a significant impact.",
+        7: "American teenagers spend minimal time on social media, resulting in decreased loneliness and depression."
+    }
+    answers = {
+        1: "F",
+        2: "T",
+        3: "F",
+        4: "T",
+        5: "F",
+        6: "T",
+        7: "F"
+    }
+    display_quiz(questions, answers, prefix="us_edu")
 
 
 def get_transform_edu_article():
@@ -95,6 +114,39 @@ def get_carrier_tab():
 
 def get_health_article():
     st.markdown(health_article)
+    questions = {
+        1: "The Be Active scheme started up earlier this year.",
+        2: "Everyone in Birmingham is eligible for Be Active.",
+        3: "Participants must pay a one-off fee to register.",
+        4: "Participants can use the leisure facilities at any time of day.",
+        5: "Participants can use their Be Active membership cards at any sports centre in Birmingham.",
+        6: "Participants can only use the leisure facilities for two hours per week.",
+        7: "Some sports centres dedicate over half their opening hours to Be Active members.",
+        8: "Some Be Active activities take place outside leisure centres.",
+        9: "The Be Active scheme was not as popular as the council hoped.",
+        10: "The Be Active scheme attracts both slim and overweight people.",
+        11: "The majority of participants are White British.",
+        12: "The scheme is saving the government money in health costs.",
+        13: "Less money is available for Be Active now than in the past.",
+        14: "The Be Active Scheme is currently only available in Birmingham."
+    }
+    answers = {
+        1: "F",
+        2: "F",
+        3: "F",
+        4: "F",
+        5: "F",
+        6: "F",
+        7: "T",
+        8: "T",
+        9: "F",
+        10: "T",
+        11: "F",
+        12: "T",
+        13: "T",
+        14: "T"
+    }
+    display_quiz(questions, answers, prefix="health")
 
 
 def get_health_tab():
