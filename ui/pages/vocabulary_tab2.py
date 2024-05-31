@@ -309,7 +309,6 @@ def display_exercise():
     st.image("https://img.freepik.com/free-vector/scientists-studying-neural-connections-programmers-writing-codes-machine-brain_74855-14157.jpg")
     get_meaning_quiz_ex()
     get_colocation_quiz_ex()
-    # get_suitable_option_ex()
 
 
 def get_education_tab():

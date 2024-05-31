@@ -9,11 +9,10 @@ class UI:
             add_page_title()
 
         pages = [
-            Page("ui/pages/reading.py", "Чтение", "📖"),  # Book
-            Page("ui/pages/vocabulary.py", "Грамматика", "📝"),  # Memo
-            Page("ui/pages/video.py", "Видео", "🎥"),  # Movie Camera
-            Page("ui/pages/grammar.py", "Лексика", "📚"),  # Books
+            Page("ui/pages/reading.py", "Reading", "📖"),  # Book
+            Page("ui/pages/vocabulary.py", "Vocabulary", "📚"),  # Books
+            Page("ui/pages/grammar.py", "Grammar", "📝"),  # Memo
+            Page("ui/pages/video.py", "Video", "🎥"),  # Movie Camera
             # Page("ui/pages/about.py", "About", "ℹ️"),  # Information
         ]
-
         show_pages(pages)

@@ -2,7 +2,7 @@ import streamlit as st
 from ui.pages.reading_texts_tab1 import american_edu_article, transform_edu_article, uk_edu_article
 from ui.pages.reading_texts_tab2 import carrier_article
 from ui.pages.reading_texts_tab3 import health_article
-from ui.pages.utils import display_quiz
+from ui.pages.utils import display_quiz, display_questionaire
 
 
 def get_american_edu_article():
@@ -36,6 +36,37 @@ def get_transform_edu_article():
     st.markdown("By The Hon. Minister David Sengeh and Rebecca Winthrop June 23, 2022")
     st.write("------")
     st.markdown(transform_edu_article)
+    questions = [
+        ("According to the passage, the UN reported that how many school-aged children impacted by crisis require urgent educational support?", 
+         ["100 million", "150 million", "200 million", "222 million"]),
+        ("What is the estimated percentage of 10-year-olds in low- and middle-income countries who could not read a simple story during the pandemic?", 
+         ["30%", "50%", "60%", "70%"]),
+        ("Which region has been hit the hardest by the lack of quality education during the pandemic?", 
+         ["Urban areas", "The poorest children and those living in remote regions", "Developed countries", "High-income countries"]),
+        ("What did the UN Secretary-General invite political leaders, policymakers, youth, and stakeholders to attend in September 2022?", 
+         ["United Nations Education Summit", "Global Education Forum", "Transforming Education Summit (TES)", "Education Transformation Conference"]),
+        ("According to the passage, which country has made a point of consulting previously excluded groups like the bike riders union and market women's associations in developing its education sector plan?", 
+         ["Finland", "Sierra Leone", "Canada", "Portugal"]),
+        ("Which educational approach has shown promising results in improving literacy and numeracy in countries with large numbers of students failing to master these skills by the end of primary school?", 
+         ["Whole group instruction", "Standardised testing", "Competency-based learning", "Teaching at the Right Level"]),
+        ("What are the six key components that the education system in Sierra Leone has focused on positioning and aligning to support the pedagogical core?", 
+         ["Curriculum, teacher training, data, governance, funding, stakeholder engagement", 
+          "Curriculum, human resources, data and assessment, governance, funding, stakeholder engagement", 
+          "Curriculum, teacher training, technology, governance, funding, community engagement", 
+          "Curriculum, human resources, data and assessment, governance, infrastructure, stakeholder engagement"])
+    ]
+
+    correct_answers = [
+        "222 million",
+        "70%",
+        "The poorest children and those living in remote regions ",
+        "Transforming Education Summit (TES) ",
+        "Sierra Leone",
+        "Teaching at the Right Level",
+        "Curriculum, human resources, data and assessment, governance, funding, stakeholder engagement"
+    ]
+
+    display_questionaire(questions, correct_answers, prefix="transform_edu_assessment")
 
 
 def get_uk_edu_article():
