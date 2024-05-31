@@ -9,7 +9,7 @@ def display_vocabulary(vocabulary, prefix="vocab"):
 
 def get_health_tab():
     st.header("Health Vocabulary and Exercises")
-    st.image()
+    st.image("ui/static/health.jpg")
     vocabulary = ["Healthy", "Wellness", "Fitness", "Nutrition", "Exercise", "Well-being", "Hygiene", "Balance", "Strength", "Immunity"]
     display_vocabulary(vocabulary, prefix="health_vocab")
 

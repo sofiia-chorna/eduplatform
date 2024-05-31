@@ -5,9 +5,6 @@ class UI:
     @staticmethod
     def setup_pages(show_title=True):
 
-        if show_title:
-            add_page_title()
-
         pages = [
             Page("ui/pages/reading.py", "Reading", "📖"),  # Book
             Page("ui/pages/vocabulary.py", "Vocabulary", "📚"),  # Books

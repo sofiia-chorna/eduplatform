@@ -71,7 +71,7 @@ def get_transform_edu_article():
 
 def get_uk_edu_article():
     st.markdown(uk_edu_article)
-    
+    st.image("ui/static/education.jpg")
     questions = {
         1: "Education in the UK is highly regarded worldwide.",
         2: "International students in the UK receive no language support.",
@@ -181,6 +181,7 @@ def get_health_article():
 
 
 def get_health_tab():
+    st.image("ui/static/health2.jpg")
     get_health_article()
 
 
